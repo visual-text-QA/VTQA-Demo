@@ -18,7 +18,9 @@ def parse_args():
 
     parser.add_argument('--RESULT_PATH', type=str, default='../test_pred.json')
 
-    parser.add_argument('--MODEL_PATH', type=str, default='./results/ckpts/ckpt_demo/epoch13.pkl')
+    parser.add_argument(
+        '--MODEL_PATH', type=str, default='./results/ckpts/ckpt_demo/epoch13.pkl'
+    )
 
     parser.add_argument(
         '--MODEL', choices=['small', 'large'], type=str, default='small'
@@ -45,7 +47,7 @@ if __name__ == '__main__':
     cfg_file = "config/{}_model.yml".format(args.MODEL)
     model_path = args.MODEL_PATH
     with open(cfg_file, 'r') as f:
-        yaml_dict = yaml.load(f)
+        yaml_dict = yaml.load(f, Loader=yaml.FullLoader)
 
     args_dict = {**yaml_dict, **args_dict}
     __C.add_args(args_dict)
