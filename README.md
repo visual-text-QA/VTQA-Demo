@@ -2,7 +2,7 @@
 
 This repository is used as a demo for the [VTQA Challenge](https://visual-text-qa.github.io/)
 
-For more details about the method, please refer to the [paper](https://arxiv.org/abs/***)
+<!-- For more details about the method, please refer to the [paper](https://arxiv.org/abs/***) -->
 
 ## Table of Contents
 
@@ -103,11 +103,11 @@ Your submission will be run using the following command:
 docker pull <username>/vtqa:submission
 docker run --shm-size 8g -v <path to folder containing the test.json>:/workspace/data -v <path to save predict json>:/workspace/test_pred.json --gpus all --rm vtqa:submission /bin/bash /workspace/VTQA-Demo/test.sh
 ```
-
+<!-- 
 ## Citation
 
 If this repository is helpful for your research, we'd really appreciate it if you could cite the following paper:
 
 ```
 
-```
+``` -->
