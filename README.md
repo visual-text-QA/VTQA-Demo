@@ -64,7 +64,7 @@ git clone https://github.com/visual-text-QA/VTQA-Demo.git
 
 ```
 cd VTQA-Demo
-python main.py --RUN_MODE train
+python main.py --RUN train
 ```
 
 The default setting for `train` will eval the val set every epoch and eval the test_dev set after training. The trained model will be saved in `/workspace/vtqa/results/ckpts/ckpt_demo/epoch13.pkl`. And the predict answers for the test_dev set will be saved in `/workspace/vtqa/results/pred/test_dev_result_demo.json`.
