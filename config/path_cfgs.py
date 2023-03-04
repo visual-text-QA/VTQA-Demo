@@ -15,6 +15,9 @@ class PATH:
         self.LOG_PATH = './results/log/'
         self.CKPTS_PATH = './results/ckpts/'
 
+        if not os.path.exists('./results'):
+            os.mkdir('./results')
+
         if 'pred' not in os.listdir('./results'):
             os.mkdir('./results/pred')
 
