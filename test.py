@@ -14,7 +14,7 @@ def parse_args():
     '''
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--DATASET_PATH', type=str, default='../data')
+    parser.add_argument('--DATASET_PATH', type=str, default='../data/')
 
     parser.add_argument('--RESULT_PATH', type=str, default='../test_pred.json')
 
@@ -31,7 +31,7 @@ def parse_args():
     )
 
     parser.add_argument(
-        '--FEATURE_TYPE', choices=['region', 'grid'], type=str, default='../region'
+        '--FEATURE_TYPE', choices=['region', 'grid'], type=str, default='..region'
     )
 
     args = parser.parse_args()
