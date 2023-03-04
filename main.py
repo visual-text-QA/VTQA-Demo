@@ -66,7 +66,9 @@ def parse_args():
 
     parser.add_argument('--SEED', dest='SEED', help='fix random seed', type=int)
 
-    parser.add_argument('--VERSION', dest='VERSION', help='version control', default='demo', type=str)
+    parser.add_argument(
+        '--VERSION', dest='VERSION', help='version control', default='demo', type=str
+    )
 
     parser.add_argument('--RESUME', dest='RESUME', help='resume training', type=bool)
 
@@ -110,7 +112,7 @@ def parse_args():
         help='bottom up features root path',
         type=str,
     )
-    
+
     parser.add_argument(
         '--FEATURE_TYPE',
         choices=['region', 'grid'],

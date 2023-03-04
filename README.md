@@ -44,7 +44,7 @@ Unzip the files and place them as follows:
 ## Create container
 
 ```
-docker run --gpus all -itd -n vtqa -v /your-data-path/:/workspace/data nvcr.io/nvidia/pytorch:23.02-py3
+docker run --gpus all -itd --name vtqa -v /your-data-path/:/workspace/data nvcr.io/nvidia/pytorch:23.02-py3
 ```
 
 ```
