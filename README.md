@@ -21,7 +21,7 @@ Go to <https://docs.docker.com/get-docker/> and install the Docker application c
 ## Pull the image
 
 ```
-docker pull nvcr.io/nvidia/pytorch:23.02-py3
+docker pull nvcr.io/nvidia/pytorch:23.01-py3
 ```
 
 (You can also use the other images to do you work.But our demo has only been tested in this image.)
@@ -34,24 +34,22 @@ Unzip the files and place them as follows:
 
 ```angular2html
 |-- data
- |-- images
- |  |-- train
- |  |-- val
- |  |-- test_dev
+	|-- images
+	|  |-- train
+	|  |-- val
+	|  |-- test_dev
     |-- annotations
 ```
 
 ## Create container
 
 ```
-docker run --gpus all -itd --name vtqa -v /your-data-path/:/workspace/data nvcr.io/nvidia/pytorch:23.02-py3
+docker run --gpus all -itd --shm-size 8g --name vtqa -v /your-data-path/:/workspace/data nvcr.io/nvidia/pytorch:23.01-py3
 ```
 
 ```
 docker exec -it vtqa /bin/bash
 ```
-
-You can now train your own model in this container. (Or just use the [demo](https://github.com/visual-text-QA/VTQA-Demo) for a quick start.)
 
 ## Clone demo code
 
@@ -73,7 +71,11 @@ The default setting for `train` will eval the val set every epoch and eval the t
 
 Register and login [here](http://81.70.95.220:20035/).
 
-For test_dev set, just upload the `test_dev_result_demo.json` file.
+For test_dev set, just download the `test_dev_result_demo.json` file and upload in the challenge website.
+
+```
+docker cp vtqa:/workspace/vtqa/results/pred/test_dev_result_demo.json /your-save-path/
+```
 
 For test set, you need to commit you container to a docker image and push your image to [DockerHub](https://hub.docker.com/).
 
