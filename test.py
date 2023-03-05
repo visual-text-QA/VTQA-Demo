@@ -16,7 +16,7 @@ def parse_args():
 
     parser.add_argument('--DATASET_PATH', type=str, default='../data/')
 
-    parser.add_argument('--RESULT_PATH', type=str, default='../data/test_pred.json')
+    parser.add_argument('--RESULT_PATH', type=str, default='../test_pred.json')
 
     parser.add_argument(
         '--MODEL_PATH', type=str, default='./results/ckpts/ckpt_demo/epoch13.pkl'
