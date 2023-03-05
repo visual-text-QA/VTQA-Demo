@@ -41,8 +41,8 @@ Unzip the files and place them as follows:
 
 ```angular2html
 |-- data
-	|-- images
-	|  |-- train
+    |-- images
+    |  |-- train
 	|  |-- val
 	|  |-- test_dev
     |-- annotations
