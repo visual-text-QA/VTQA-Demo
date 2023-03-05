@@ -43,8 +43,8 @@ Unzip the files and place them as follows:
 |-- data
     |-- images
     |  |-- train
-	|  |-- val
-	|  |-- test_dev
+    |  |-- val
+    |  |-- test_dev
     |-- annotations
 ```
 
