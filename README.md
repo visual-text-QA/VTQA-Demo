@@ -2,7 +2,7 @@
 
 This repository is used as a demo for the [VTQA Challenge](https://visual-text-qa.github.io/)
 
-<!-- For more details about the method, please refer to the [paper](https://arxiv.org/abs/***) -->
+For more details about the method, please refer to the [paper](https://arxiv.org/abs/2303.02635)
 
 ## Table of Contents
 
