@@ -103,11 +103,15 @@ Your submission will be run using the following command:
 docker pull <username>/vtqa:submission
 docker run --shm-size 8g -v <path to folder containing the test.json>:/workspace/data -v <path to save predict json>:/workspace/test_pred.json --gpus all --rm vtqa:submission /bin/bash /workspace/VTQA-Demo/test.sh
 ```
-<!-- 
+
 ## Citation
 
 If this repository is helpful for your research, we'd really appreciate it if you could cite the following paper:
 
 ```
-
-``` -->
+@inproceedings{Chen2023VTQAVT, 
+    title={VTQA: Visual Text Question Answering via Entity Alignment and Cross-Media Reasoning}, 
+    author={Kang Chen and Xiangqian Wu}, 
+    year={2023} 
+}
+```
