@@ -21,7 +21,7 @@ Go to <https://docs.docker.com/get-docker/> and install the Docker application c
 ## Pull the image
 
 ```
-docker pull nvcr.io/nvidia/pytorch:23.01-py3
+docker pull nvcr.io/nvidia/pytorch:21.12-py3
 ```
 
 (You can also use the other images to do you work.But our demo has only been tested in this image.)
@@ -51,7 +51,7 @@ Unzip the files and place them as follows:
 ## Create container
 
 ```
-docker run --gpus all -itd --shm-size 8g --name vtqa -v /your-data-path/:/workspace/data nvcr.io/nvidia/pytorch:23.01-py3
+docker run --gpus all -itd --shm-size 8g --name vtqa -v /your-data-path/:/workspace/data nvcr.io/nvidia/pytorch:21.12-py3
 ```
 
 ```
