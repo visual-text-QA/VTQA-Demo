@@ -28,14 +28,7 @@ docker pull nvcr.io/nvidia/pytorch:21.12-py3
 
 ## Download dataset
 
-You can use the following link to download data.
-
-| Data                | Google Drive                                                                                   | Baidu Yun                                                            |
-| ------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| Images              | [download](https://drive.google.com/file/d/1-Hop5LM7jiXsivpub8xB79aUdJaLf6Rw/view?usp=sharing) | [download](https://pan.baidu.com/s/1mIHGO18Jhjyb2XHHsIGBeA?pwd=4dce) |
-| Chinese Annotations | [download](https://drive.google.com/file/d/1-Cd2qFA_WJMHFw490TvCa9G6F_aXl8m9/view?usp=sharing) | [download](https://pan.baidu.com/s/1mIHGO18Jhjyb2XHHsIGBeA?pwd=4dce) |
-| English Annotations | Coming soon                                                                                    | Coming soon                                                          |
-
+You can register on our challenge [website](http://81.70.95.220:20035/) and download the data.
 
 Unzip the files and place them as follows:
 
