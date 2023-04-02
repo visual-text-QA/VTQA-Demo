@@ -69,8 +69,6 @@ The default setting for `train` will eval the val set every epoch and eval the t
 
 Tips: In this demo, we use the word vectors that are segmented and vectorized by Spacy([zh_core_web_lg:3.3.0](https://github.com/explosion/spacy-models/releases/tag/zh_core_web_lg-3.3.0) and [en_core_web_lg:3.3.0](https://github.com/explosion/spacy-models/releases/tag/en_core_web_lg-3.3.0)). If necessary, you can conduct the word segmentation and vectorization yourself, and modify the corresponding code yourself.
 
-<!-- 在demo中使用的是由spacy进行分词和向量化的词向量。如果需要，你可以自己完成分词和向量化，自行修改相应代码部分。 -->
-
 ## Submitting
 
 Register and login [here](http://vtqa-challenge.fixtankwun.top:20010/).
