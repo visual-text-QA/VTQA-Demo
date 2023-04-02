@@ -4,7 +4,6 @@ import os
 class PATH:
     def __init__(self):
 
-        # vqav2 dataset root path
         self.DATASET_PATH = '../data/'
 
         self.init_path()
