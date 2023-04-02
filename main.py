@@ -103,19 +103,14 @@ def parse_args():
     parser.add_argument('--VERB', dest='VERBOSE', help='verbose print', type=bool)
 
     parser.add_argument(
-        '--DATA_PATH', dest='DATASET_PATH', help='vqav2 dataset root path', type=str
-    )
-
-    parser.add_argument(
-        '--FEAT_PATH',
-        dest='FEATURE_PATH',
-        help='bottom up features root path',
+        '--FEATURE_TYPE',
+        choices=['region', 'grid'],
         type=str,
     )
 
     parser.add_argument(
-        '--FEATURE_TYPE',
-        choices=['region', 'grid'],
+        '--LANG',
+        choices=['zh', 'en'],
         type=str,
     )
 

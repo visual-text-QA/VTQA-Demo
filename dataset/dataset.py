@@ -8,44 +8,30 @@ import torch.utils.data as Data
 
 class DataSet(Data.Dataset):
     def __init__(self, __C, mode='train'):
+        lang = __C.LANG
         self.max_context_token = __C.MAX_CONTEXT_TOKEN
         self.max_question_token = __C.MAX_QUESTION_TOKEN
-        self.pretrained_emb = np.load(__C.DATASET_PATH + 'annotations/embedding.npy')
+        self.pretrained_emb = np.load(__C.DATASET_PATH + f'annotations/embedding_{lang}.npy')
         self.ans2id = json.load(
-            open(__C.DATASET_PATH + 'annotations/ans2id.json', 'r')
+            open(__C.DATASET_PATH + f'annotations/ans2id_{lang}.json', 'r')
         )
         self.id2ans = {str(v): k for k, v in self.ans2id.items()}
         self.token2id = json.load(
-            open(__C.DATASET_PATH + 'annotations/token2id.json', 'r')
+            open(__C.DATASET_PATH + f'annotations/token2id_{lang}.json', 'r')
         )
 
         self.mode = mode
 
-        if mode == 'train':
-            self.data = json.load(
-                open(__C.DATASET_PATH + 'annotations/train_cws.json', 'r')
-            )
-        elif mode == 'val':
-            self.data = json.load(
-                open(__C.DATASET_PATH + 'annotations/val_cws.json', 'r')
-            )
-        elif mode == 'test':
-            self.data = json.load(
-                open(__C.DATASET_PATH + 'annotations/test_cws.json', 'r')
-            )
-        elif mode == 'test_dev':
-            self.data = json.load(
-                open(__C.DATASET_PATH + 'annotations/test_dev_cws.json', 'r')
-            )
-        else:
-            assert False, 'mode not right: {}'.format(mode)
+        self.data = json.load(
+            open(__C.DATASET_PATH + f'annotations/{mode}_cws_{lang}.json', 'r')
+        )
 
         if __C.FEATURE_TYPE == 'image':
             suffix = '.jpg'
         elif __C.FEATURE_TYPE == 'grid':
             self.img_max_token = 608
             suffix = '.npy'
-        else:
+        elif __C.FEATURE_TYPE == 'region':
             self.img_max_token = 100
             suffix = '.npz'
         img_feat_path_list = glob.glob(__C.DATASET_PATH + 'images/{}/*'.format(mode) + suffix)
@@ -117,16 +103,15 @@ class DataSet(Data.Dataset):
     def proc_context(self, context, max_token):
         context_id = np.zeros(max_token, np.int64)
         ix = 0
-        for sent in context:
-            for word in sent:
-                if word in self.token2id:
-                    context_id[ix] = self.token2id[word]
-                else:
-                    context_id[ix] = self.token2id['UNK']
+        for word in context:
+            if word in self.token2id:
+                context_id[ix] = self.token2id[word]
+            else:
+                context_id[ix] = self.token2id['UNK']
 
-                if ix + 1 == max_token:
-                    break
-                ix += 1
+            if ix + 1 == max_token:
+                break
+            ix += 1
 
         return context_id
 

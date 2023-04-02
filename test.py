@@ -31,8 +31,10 @@ def parse_args():
     )
 
     parser.add_argument(
-        '--FEATURE_TYPE', choices=['region', 'grid'], type=str, default='..region'
+        '--FEATURE_TYPE', choices=['region', 'grid'], type=str, default='region'
     )
+
+    parser.add_argument('--LANG', choices=['zh', 'en'], type=str, default='zh')
 
     args = parser.parse_args()
     return args

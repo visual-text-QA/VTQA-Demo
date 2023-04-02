@@ -352,9 +352,7 @@ class Trainer:
             )
         else:
             print('use exist state_dict')
-            file_name = '{}_result_{}.json'.format(
-                mode, self.__C.VERSION
-            )
+            file_name = '{}_result_{}.json'.format(mode, self.__C.VERSION)
 
         data_size = dataset.data_size
         token_size = dataset.token_size
@@ -404,7 +402,7 @@ class Trainer:
 
         if not save_file_path:
             save_file_path = self.__C.PRED_PATH + file_name
-        json.dump(pred_json, open(save_file_path, 'w'))
+        json.dump(pred_json, open(save_file_path, 'w'), ensure_ascii=False)
 
     def run(self, run_mode):
         if run_mode == 'train':

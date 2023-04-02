@@ -62,6 +62,8 @@ class Cfgs(PATH):
 
         self.FEATURE_TYPE = 'region'
 
+        self.LANG = 'zh'
+
         # Set True to use pretrained word embedding
         # (GloVe: spaCy https://spacy.io/)
         self.USE_GLOVE = True

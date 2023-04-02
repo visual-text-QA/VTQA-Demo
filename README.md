@@ -67,6 +67,10 @@ python main.py --RUN train
 
 The default setting for `train` will eval the val set every epoch and eval the test_dev set after training. The trained model will be saved in `/workspace/vtqa/results/ckpts/ckpt_demo/epoch13.pkl`. And the predict answers for the test_dev set will be saved in `/workspace/vtqa/results/pred/test_dev_result_demo.json`.
 
+Tips: In this demo, we use the word vectors that are segmented and vectorized by Spacy([zh_core_web_lg:3.3.0](https://github.com/explosion/spacy-models/releases/tag/zh_core_web_lg-3.3.0) and [en_core_web_lg:3.3.0](https://github.com/explosion/spacy-models/releases/tag/en_core_web_lg-3.3.0)). If necessary, you can conduct the word segmentation and vectorization yourself, and modify the corresponding code yourself.
+
+<!-- 在demo中使用的是由spacy进行分词和向量化的词向量。如果需要，你可以自己完成分词和向量化，自行修改相应代码部分。 -->
+
 ## Submitting
 
 Register and login [here](http://81.70.95.220:20035/).
@@ -87,6 +91,8 @@ docker login
 docker commit -a $USER -m "vtqa submission" ${SOURCE}  vtqa:submission
 docker push vtqa:submission
 ```
+
+<!-- 建议仅保留需要执行的代码和进行测试的模型文件，特别是不要包含数据和大量的非测试使用的模型文件 -->
 
 Then you can submit your docker image name [here](http://81.70.95.220:20035/).
 
