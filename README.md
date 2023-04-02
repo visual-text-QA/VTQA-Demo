@@ -28,7 +28,7 @@ docker pull nvcr.io/nvidia/pytorch:21.12-py3
 
 ## Download dataset
 
-You can register on our challenge [website](http://81.70.95.220:20035/) and download the data.
+You can register on our challenge [website](http://vtqa-challenge.fixtankwun.top:20010/) and download the data.
 
 Unzip the files and place them as follows:
 
@@ -73,7 +73,7 @@ Tips: In this demo, we use the word vectors that are segmented and vectorized by
 
 ## Submitting
 
-Register and login [here](http://81.70.95.220:20035/).
+Register and login [here](http://vtqa-challenge.fixtankwun.top:20010/).
 
 For test_dev set, just download the `test_dev_result_demo.json` file and upload in the challenge website.
 
@@ -92,9 +92,7 @@ docker commit -a $USER -m "vtqa submission" ${SOURCE}  vtqa:submission
 docker push vtqa:submission
 ```
 
-<!-- 建议仅保留需要执行的代码和进行测试的模型文件，特别是不要包含数据和大量的非测试使用的模型文件 -->
-
-Then you can submit your docker image name [here](http://81.70.95.220:20035/).
+Then you can submit your docker image name [here](http://vtqa-challenge.fixtankwun.top:20010/).
 
 Your submission will be run using the following command: 
 
