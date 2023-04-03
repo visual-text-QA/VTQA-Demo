@@ -67,7 +67,7 @@ python main.py --RUN train
 
 The default setting for `train` will eval the val set every epoch and eval the test_dev set after training. The trained model will be saved in `/workspace/vtqa/results/ckpts/ckpt_demo/epoch13.pkl`. And the predict answers for the test_dev set will be saved in `/workspace/vtqa/results/pred/test_dev_result_demo.json`.
 
-Tips: In this demo, we use the word vectors that are segmented and vectorized by Spacy([zh_core_web_lg:3.3.0](https://github.com/explosion/spacy-models/releases/tag/zh_core_web_lg-3.3.0) and [en_core_web_lg:3.3.0](https://github.com/explosion/spacy-models/releases/tag/en_core_web_lg-3.3.0)). If necessary, you can conduct the word segmentation and vectorization yourself, and modify the corresponding code yourself.
+Tips: In this demo, we use the word vectors that are segmented and vectorized by spaCy([zh_core_web_lg:3.3.0](https://github.com/explosion/spacy-models/releases/tag/zh_core_web_lg-3.3.0) and [en_core_web_lg:3.3.0](https://github.com/explosion/spacy-models/releases/tag/en_core_web_lg-3.3.0)). If necessary, you can conduct the word segmentation and vectorization yourself, and modify the corresponding code yourself.
 
 ## Submitting
 
