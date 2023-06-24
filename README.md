@@ -91,6 +91,8 @@ docker commit -a ${USER} -m "vtqa submission" ${SOURCE} ${IMAGENAME}
 docker push ${IMAGENAME}
 ```
 
+Tips: To avoid code leakage, it is recommended to use random image names or private images
+
 Then you can submit your docker image name [here](http://vtqa-challenge.fixtankwun.top:20010/).
 
 Your submission will be run using the following command: 
