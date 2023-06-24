@@ -110,8 +110,8 @@ cp ${DATA}/annotations/test_dev_en.json ${DATA}/annotations/test_en.json
 cp ${DATA}/annotations/test_dev_zh.json ${DATA}/annotations/test_zh.json 
 cp ${DATA}/annotations/test_dev_cws_en.json ${DATA}/annotations/test_cws_en.json 
 cp ${DATA}/annotations/test_dev_cws_zh.json ${DATA}/annotations/test_cws_zh.json
-touch test_pred.json
-docker run --shm-size 8g -v ${DATA}:/workspace/data -v test_pred.json:/workspace/test_pred.json --gpus 0 --rm <username>/<imagename> /bin/bash /workspace/VTQA-Demo/test.sh
+touch ${DATA}/test_pred.json
+docker run --shm-size 8g -v ${DATA}:/workspace/data -v ${DATA}/test_pred.json:/workspace/test_pred.json --gpus 0 --rm <username>/<imagename> /bin/bash /workspace/VTQA-Demo/test.sh
 ```
 
 ## Citation
