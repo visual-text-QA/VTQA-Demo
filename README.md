@@ -79,15 +79,16 @@ For test_dev set, just download the `test_dev_result_demo.json` file and upload 
 docker cp vtqa:/workspace/VTQA-Demo/results/pred/test_dev_result_demo.json /your-save-path/
 ```
 
-For test set, you need to commit you container to a docker image and push your image to [DockerHub](https://hub.docker.com/).
+For test set, you need to commit you container to a docker image and push your image to [DockerHub](https://hub.docker.com/). (Other public Docker image sources can also be used)
 
-Example for a Dockerhub user called `<username>`:
+Example for a Dockerhub user called `<username>` and Docker Image name `<imagename>` (example for Image name: `vtqa:submission`):
 ```
 SOURCE=<container name>
 USER=<username>
+IMAGENAME=<imagename>
 docker login
-docker commit -a $USER -m "vtqa submission" ${SOURCE}  vtqa:submission
-docker push vtqa:submission
+docker commit -a ${USER} -m "vtqa submission" ${SOURCE} ${IMAGENAME}
+docker push ${IMAGENAME}
 ```
 
 Then you can submit your docker image name [here](http://vtqa-challenge.fixtankwun.top:20010/).
@@ -95,8 +96,20 @@ Then you can submit your docker image name [here](http://vtqa-challenge.fixtankw
 Your submission will be run using the following command: 
 
 ```
-docker pull <username>/vtqa:submission
-docker run --shm-size 8g -v <path to folder containing the test.json>:/workspace/data -v <path to save predict json>:/workspace/test_pred.json --gpus all --rm vtqa:submission /bin/bash /workspace/VTQA-Demo/test.sh
+docker pull <username>/<imagename>
+docker run --shm-size 8g -v <path to folder containing the test.json>:/workspace/data -v <path to save predict json>:/workspace/test_pred.json --gpus 0 --rm <username>/<imagename> /bin/bash /workspace/VTQA-Demo/test.sh
+```
+
+To ensure correct submission, it is recommended that you conduct local testing through the following commands before submitting
+
+```
+DATA=/your-data-path/
+cp ${DATA}/annotations/test_dev_en.json ${DATA}/annotations/test_en.json 
+cp ${DATA}/annotations/test_dev_zh.json ${DATA}/annotations/test_zh.json 
+cp ${DATA}/annotations/test_dev_cws_en.json ${DATA}/annotations/test_cws_en.json 
+cp ${DATA}/annotations/test_dev_cws_zh.json ${DATA}/annotations/test_cws_zh.json
+touch test_pred.json
+docker run --shm-size 8g -v ${DATA}:/workspace/data -v test_pred.json:/workspace/test_pred.json --gpus 0 --rm <username>/<imagename> /bin/bash /workspace/VTQA-Demo/test.sh
 ```
 
 ## Citation
