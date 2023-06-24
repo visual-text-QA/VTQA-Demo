@@ -99,7 +99,7 @@ Your submission will be run using the following command:
 
 ```
 docker pull <username>/<imagename>
-docker run --shm-size 8g -v <path to folder containing the test.json>:/workspace/data -v <path to save predict json>:/workspace/test_pred.json --gpus 0 --rm <username>/<imagename> /bin/bash /workspace/VTQA-Demo/test.sh
+docker run --network none --shm-size 8g -v <path to folder containing the test.json>:/workspace/data -v <path to save predict json>:/workspace/test_pred.json --gpus 0 --rm <username>/<imagename> /bin/bash /workspace/VTQA-Demo/test.sh
 ```
 
 To ensure correct submission, it is recommended that you conduct local testing through the following commands before submitting
@@ -111,7 +111,7 @@ cp ${DATA}/annotations/test_dev_zh.json ${DATA}/annotations/test_zh.json
 cp ${DATA}/annotations/test_dev_cws_en.json ${DATA}/annotations/test_cws_en.json 
 cp ${DATA}/annotations/test_dev_cws_zh.json ${DATA}/annotations/test_cws_zh.json
 touch ${DATA}/test_pred.json
-docker run --shm-size 8g -v ${DATA}:/workspace/data -v ${DATA}/test_pred.json:/workspace/test_pred.json --gpus 0 --rm <username>/<imagename> /bin/bash /workspace/VTQA-Demo/test.sh
+docker run --network none --shm-size 8g -v ${DATA}:/workspace/data -v ${DATA}/test_pred.json:/workspace/test_pred.json --gpus 0 --rm <username>/<imagename> /bin/bash /workspace/VTQA-Demo/test.sh
 ```
 
 ## Citation
