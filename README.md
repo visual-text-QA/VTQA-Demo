@@ -28,7 +28,8 @@ docker pull nvcr.io/nvidia/pytorch:21.12-py3
 
 ## Download dataset
 
-You can register on our challenge [website](http://vtqa-challenge.fixtankwun.top:20010/) and download the data.
+<s>You can register on our challenge [website](http://vtqa-challenge.fixtankwun.top:20010/) and download the data.</s>
+Now data can be obtained using [transformers](https://huggingface.co/datasets/CalfKing/vtqa2023). There are some changes in the data format, and the demo will be modified to adapt to it later.
 
 Unzip the files and place them as follows:
 
