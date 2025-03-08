@@ -271,9 +271,9 @@ class Trainer:
             state_dict = torch.load(path)['state_dict']
             print('Finish!')
 
-        data_size = dataset.data_size
-        token_size = dataset.token_size
-        pretrained_emb = dataset.pretrained_emb
+        data_size = len(dataset)
+        token_size = self.token_size
+        pretrained_emb = self.pretrained_emb
 
         net = Net(self.__C, pretrained_emb, token_size, self.ans_size)
         net.cuda()
@@ -359,9 +359,9 @@ class Trainer:
             print('use exist state_dict')
             file_name = '{}_result_{}.json'.format(mode, self.__C.VERSION)
 
-        data_size = dataset.data_size
-        token_size = dataset.token_size
-        pretrained_emb = dataset.pretrained_emb
+        data_size = len(dataset)
+        token_size = self.token_size
+        pretrained_emb = self.pretrained_emb
 
         net = Net(self.__C, pretrained_emb, token_size, self.ans_size)
         net.cuda()
