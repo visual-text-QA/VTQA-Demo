@@ -86,7 +86,7 @@ class Cfgs(PATH):
         self.BATCH_SIZE = 64
 
         # Multi-thread I/O
-        self.NUM_WORKERS = 8
+        self.NUM_WORKERS = 2
 
         # Use pin memory
         # (Warning: pin memory can accelerate GPU loading but may

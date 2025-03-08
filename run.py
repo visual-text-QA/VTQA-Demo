@@ -12,6 +12,7 @@ import torch.utils.data as Data
 from dataset import DataSet
 from model import Net
 from model.optim import adjust_lr, get_optim
+from dataset.hg_vtqa_dataset import load_vtqa
 
 
 class Trainer:
@@ -19,25 +20,28 @@ class Trainer:
         self.__C = __C
 
         print('Loading training set ........')
-        self.dataset = DataSet(__C, 'train')
-        self.ans_size = self.dataset.ans_size
+        vtqa_dataset, token_to_ix, pretrained_emb, label2id, id2label = load_vtqa(max_context_token=__C.MAX_CONTEXT_TOKEN, max_question_token=__C.MAX_QUESTION_TOKEN, img_feature_type=__C.FEATURE_TYPE, lang=__C.LANG, use_cws=__C.USE_GLOVE, local_url="../vtqa/")
+        self.dataset = vtqa_dataset['train']
+        self.ans_size = len(label2id)
+        self.token_size = len(token_to_ix)
+        self.pretrained_emb = pretrained_emb
 
         self.dataset_eval = None
         if __C.EVAL_EVERY_EPOCH:
             print('Loading validation set for per-epoch evaluation ........')
-            self.dataset_eval = DataSet(__C, 'val')
+            self.dataset_eval = vtqa_dataset['validation']
 
         self.dataset_test = None
         if __C.TEST_AFTER_TRAIN:
             print('Loading test_dev set for after-train evaluation ........')
-            self.dataset_test = DataSet(__C, 'test_dev')
+            self.dataset_test = vtqa_dataset['test_dev']
 
     def train(self, dataset, dataset_eval=None, dataset_test=None):
 
         # Obtain needed information
-        data_size = dataset.data_size
-        token_size = dataset.token_size
-        pretrained_emb = dataset.pretrained_emb
+        data_size = len(dataset)
+        token_size = self.token_size
+        pretrained_emb = self.pretrained_emb
 
         # Define the MCAN model
         net = Net(self.__C, pretrained_emb, token_size, self.ans_size)
@@ -142,8 +146,9 @@ class Trainer:
             for step, d in enumerate(dataloader):
 
                 optim.zero_grad()
+                d = {k: v.cuda() for k, v in d.items()}
 
-                (image_feat, context, question, answer_idx) = (v.cuda() for v in d)
+                (image_feat, context, question, answer_idx) = (d['pixel_values'], d['context_input_ids'], d['question_input_ids'], d['labels'])
 
                 pred = net(image_feat, context, question)
 
